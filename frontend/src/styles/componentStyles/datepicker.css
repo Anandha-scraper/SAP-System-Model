@@ -1,0 +1,343 @@
+/* DatePicker Container */
+.custom-datepicker {
+  position: relative;
+  width: 100%;
+}
+
+.datepicker-input {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.datepicker-input.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.datepicker-input input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1e293b;
+  background-color: #f8fafc;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.2s;
+}
+
+.datepicker-input input:disabled {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.datepicker-input input:focus {
+  outline: none;
+  border-color: #4A70A9;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(74, 112, 169, 0.1);
+}
+
+.datepicker-input input::placeholder {
+  color: #94a3b8;
+}
+
+.calendar-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+}
+
+/* Calendar Popup - Opens downward by default */
+.calendar-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 10000;
+  width: min(280px, 90vw);
+  padding: 10px;
+}
+
+/* Opens upward when space is limited (inside popups) */
+.calendar-popup.open-upward {
+  top: auto;
+  bottom: calc(100% + 8px);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.calendar-header {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: linear-gradient(135deg, #4A70A9, #8FABD4);
+  border-radius: 8px;
+}
+
+.month-year-select {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.month-select,
+.year-select {
+  width: 100%;
+  padding: 6px 24px 6px 8px;
+  border: none;
+  border-radius: 6px;
+  background: white;
+  color: #1e293b;
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.2s;
+}
+
+.year-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 6px;
+  background: white;
+  color: #1e293b;
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.year-input::-webkit-inner-spin-button,
+.year-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.year-input:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 1px;
+}
+
+.year-select option[value="custom"] {
+  background: #e2e8f0;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.month-select:hover,
+.year-select:hover {
+  background: #f8fafc;
+}
+
+.month-select:focus,
+.year-select:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 1px;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #64748b;
+}
+
+.year-display {
+  flex: 1;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: white;
+  color: #1e293b;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.year-display:hover {
+  background: #f8fafc;
+}
+
+.year-picker {
+  padding: 6px;
+}
+
+.year-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 6px;
+  background: linear-gradient(135deg, #4A70A9, #8FABD4);
+  border-radius: 8px;
+}
+
+.year-range-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.year-nav-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.year-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.year-cell {
+  padding: 10px;
+  border: none;
+  background: #f8fafc;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.year-cell:hover {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.year-cell.selected {
+  background: linear-gradient(135deg, #4A70A9, #8FABD4);
+  color: white;
+}
+
+.month-year {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-name {
+  font-size: clamp(9px, 2.5vw, 11px);
+  font-weight: 600;
+  color: #64748b;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+}
+
+.day-cell:hover:not(.disabled):not(.empty) {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.day-cell.empty {
+  cursor: default;
+  visibility: hidden;
+}
+
+.day-cell.today {
+  border: 2px solid #4A70A9;
+  font-weight: 700;
+}
+
+.day-cell.selected {
+  background: linear-gradient(135deg, #4A70A9, #8FABD4);
+  color: white;
+  font-weight: 700;
+}
+
+.day-cell.selected:hover {
+  background: linear-gradient(135deg, #4A70A9, #8FABD4);
+  color: white;
+}
+
+.day-cell.disabled {
+  color: #cbd5e1;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .calendar-popup {
+    width: min(300px, 95vw);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .calendar-popup.open-upward {
+    transform: translateX(-50%);
+  }
+  
+  .datepicker-input input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .month-select,
+  .year-select,
+  .year-input {
+    font-size: 12px;
+  }
+  
+  .day-cell {
+    min-height: 36px;
+  }
+}
