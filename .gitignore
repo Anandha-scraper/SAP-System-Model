@@ -24,3 +24,8 @@ logs/
 # Build artifacts
 dist/
 build/
+
+# Firebase/Google credentials
+**/serviceAccountKey.json
+**/firebase-adminsdk*.json
+**/credentials.json
