@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import AuthPage from './src/pages/Login.jsx';
+import LoginCardSection from './src/components/ui/login-signup';
 import Home from './src/pages/home.jsx';
 
 // Helper function to decode JWT and get user role
@@ -62,7 +62,7 @@ function App() {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
-        <Route path="/login" element={<AuthPage />} />
+        <Route path="/login" element={<LoginCardSection />} />
         <Route
           path="/home"
           element={
